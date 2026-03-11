@@ -1,13 +1,16 @@
 pipeline {
     agent { 
-      label('myslave')
+        label('myslave')
     }
 
     stages {
-       stage('hostname') {
+
+        stage('Hostname') {
             steps {
-                echo 'hostname -i'
+                sh 'hostname -i'
             }
+        }
+
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
@@ -31,5 +34,6 @@ pipeline {
                 echo 'Deploying application'
             }
         }
+
     }
 }
