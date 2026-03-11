@@ -4,6 +4,10 @@ pipeline {
     }
 
     stages {
+       stage('hostname') {
+            steps {
+                echo 'hostname -i'
+            }
         stage('Checkout') {
             steps {
                 echo 'Cloning repository...'
