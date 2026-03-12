@@ -1,7 +1,5 @@
 pipeline {
-    agent { 
-        label('myslave')
-    }
+    agent any
 
     stages {
 
@@ -26,12 +24,6 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running tests'
-            }
-        }
-
-        stage('Deploy') {
-            steps {
-                echo 'Deploying application'
             }
         }
 
