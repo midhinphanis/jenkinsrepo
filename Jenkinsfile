@@ -1,5 +1,5 @@
 pipeline {
-    agent any
+    agent any 
 
     environment {
         sport = "cricket"
@@ -7,16 +7,23 @@ pipeline {
     }
 
     stages {
-        stage ("build") {
-            environment {
-                game = "soccer"
-            }
 
+        stage("first stage") {
+            environment {
+                sport = "soccer"
+            }
             steps {
-                echo "enjoy playing ${sport}"
-                echo "batsmen is ${name}"
-                echo "another play is ${game}"
+                echo "the sport is ${sport}"
+                echo "the player is ${name}"
             }
         }
+
+        stage("second stage") {
+            steps {
+                echo "the sport is ${sport}"
+                echo "the player is ${name}"
+            }
+        }
+
     }
 }
