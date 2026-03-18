@@ -1,18 +1,17 @@
 pipeline {
     agent any 
+
     environment {
-        course = "Docker and K8S"
-        name = "Siva"
+        MUMBAI_CREDS = credentials('rohit_mumbai_creds')
+        CSK_CREDS = credentials('dhoni')
     }
+
     stages {
-        stage ("Build") {
-            environment {
-                cloud = "GCP"
-            }
+        stage('Test Credentials') {
             steps {
-                echo "Welcome ${name}"
-                echo "You Enrolled for ${course}"
-                echo "You are certified in ${cloud} Cloud"
+                echo "MUMBAI_CREDS credentials is ${MUMBAI_CREDS}"
+                echo "Username is ${MUMBAI_CREDS_USR}"
+                echo "Password is ${MUMBAI_CREDS_PSW}"
             }
         }
     }
