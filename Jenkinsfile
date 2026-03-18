@@ -1,34 +1,22 @@
 pipeline {
-    agent { 
-        label ('myslave')
-    
+    agent any
+
+    environment {
+        sport = "cricket"
+        name = "rohit"
     }
 
     stages {
+        stage ("build") {
+            environment {
+                game = "soccer"
+            }
 
-        stage('Hostname') {
             steps {
-                sh 'hostname -i'
+                echo "enjoy playing ${sport}"
+                echo "batsmen is ${name}"
+                echo "another play is ${game}"
             }
         }
-
-        stage('Checkout') {
-            steps {
-                echo 'Cloning repository...'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building application'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests'
-            }
-        }
-
     }
 }
