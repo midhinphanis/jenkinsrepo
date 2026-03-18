@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         MUMBAI_CREDS = credentials('rohit_mumbai_creds')
-        CSK_CREDS = credentials('dhoni')
+        CSK_CREDS = credentials('dhoni_creds')
     }
 
     stages {
