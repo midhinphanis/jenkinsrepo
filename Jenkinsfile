@@ -1,34 +1,19 @@
 pipeline {
-    agent { 
-        label ('myslave')
-    
+    agent any 
+    environment {
+        course = "Docker and K8S"
+        name = "Siva"
     }
-
     stages {
-
-        stage('Hostname') {
+        stage ("Build") {
+            environment {
+                cloud = "GCP"
+            }
             steps {
-                sh 'hostname -i'
+                echo "Welcome ${name}"
+                echo "You Enrolled for ${course}"
+                echo "You are certified in ${cloud} Cloud"
             }
         }
-
-        stage('Checkout') {
-            steps {
-                echo 'Cloning repository...'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                echo 'Building application'
-            }
-        }
-
-        stage('Test') {
-            steps {
-                echo 'Running tests'
-            }
-        }
-
     }
 }
