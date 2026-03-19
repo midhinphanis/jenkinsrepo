@@ -8,8 +8,7 @@ pipeline{
         stage('first stage'){
             when{
                 not{
-                    branch 'main'
-
+                    environment name: 'match' , value: 'cricket'
                 }
                 
             }
