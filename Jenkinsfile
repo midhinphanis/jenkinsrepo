@@ -7,8 +7,8 @@ pipeline{
     stages {
         stage('first stage'){
             when{
-                allOf{
-                    branch 'feature-branch'
+                anyOf{
+                    branch 'main'
                     environment name: 'match' , value: 'cricket'
 
                 }
