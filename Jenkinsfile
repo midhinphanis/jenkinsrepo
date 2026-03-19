@@ -1,28 +1,30 @@
-pipeline{
+pipeline {
     agent any
-    environment{
+
+    environment {
         match = "cricket"
         team = "india"
     }
+
     stages {
-        stage('first stage'){
-            when{
-                not{
-                    environment name: 'game' , value: 'soccer'
+        stage('first stage') {
+            when {
+                not {
+                    environment name: 'match', value: 'soccer'
                 }
-                
             }
-            steps{
-                echo "india playing soccer"
+            steps {
+                echo "india playing cricket"
             }
         }
-        stage('second stage'){
-             when{
+
+        stage('second stage') {
+            when {
                 expression { BRANCH_NAME == 'main' }
-        steps{
-            echo "team is india"
+            }
+            steps {
+                echo "team is india"
+            }
         }
     }
-}
-}
 }
