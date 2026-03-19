@@ -1,16 +1,23 @@
-pipeline {
+pipeline{
     agent any
-
+    environment{
+        match = "cricket"
+        team = "india"
+    }
     stages {
-        stage('Test Credentials') {
-            environment {
-               GITHUB_CREDS = credentials('midhinphanis_github_creds')
+        stage('first stage'){
+            when{
+                allOf{
+                    branch 'feature-branch'
+                    environment name: 'match' , value: 'cricket'
+
+                }
+                
             }
-            steps {
-                 echo "GITHUB_CREDS credentials is ${ GITHUB_CREDS}"
-                echo "Username is ${GITHUB_CREDS_USR}"
-                echo "Password is ${GITHUB_CREDS_PSW}"
+            steps{
+                echo "india playing cricket"
             }
         }
     }
 }
+
