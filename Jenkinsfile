@@ -18,11 +18,7 @@ pipeline{
         }
         stage('second stage'){
              when{
-                allOf{
-                    branch 'main'
-                    environment name: 'team' , value: 'india'
-                }
-             }
+                expression { BRANCH_NAME == 'main' }
         steps{
             echo "team is india"
         }
