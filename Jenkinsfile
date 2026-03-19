@@ -7,9 +7,9 @@ pipeline{
     stages {
         stage('first stage'){
             when{
-                anyOf{
+                allOf{
                     branch 'main'
-                    environment name: 'match' , value: 'cricket'
+                    environment name: 'game' , value: 'soccer'
 
                 }
                 
@@ -18,6 +18,15 @@ pipeline{
                 echo "india playing cricket"
             }
         }
+        stage('second stage'){
+             when{
+                allOf{
+                    branch 'feature-branch'
+                    environment name: 'team' , value: 'india'
+                }
+             }
+        steps{
+            echo "team is india"
+        }
     }
 }
-
