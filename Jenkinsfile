@@ -4,11 +4,12 @@ pipeline {
     stages {
         stage('Test Credentials') {
             environment {
-                MUMBAI_CREDS = credentials('rohit_mumbai_creds')
+               GITHUB_CREDS = credentials('midhinphanis_github_creds')
             }
             steps {
-                echo "Username is ${MUMBAI_CREDS_USR}"
-                echo "Credentials loaded successfully"
+                 echo = "GITHUB_CREDS credentials is ${ GITHUB_CREDS}"
+                echo = "Username is ${GITHUB_CREDS_USR}"
+                echo = "Password is ${GITHUB_CREDS_PSW}"
             }
         }
     }
