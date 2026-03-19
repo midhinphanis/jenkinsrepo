@@ -1,29 +1,32 @@
-pipeline {
-    agent any 
-
-    environment {
-        sport = "cricket"
-        name = "rohit"
+pipeline{
+    agent any
+    environment{
+        match = "cricket"
+        team = "india"
     }
-
     stages {
+        stage('first stage'){
+            when{
+                not{
+                    branch 'main'
 
-        stage("first stage") {
-            environment {
-                sport = "soccer"
+                }
+                
             }
-            steps {
-                echo "the sport is ${sport}"
-                echo "the player is ${name}"
-            }
-        }
-
-        stage("second stage") {
-            steps {
-                echo "the sport is ${sport}"
-                echo "the player is ${name}"
+            steps{
+                echo "india playing cricket"
             }
         }
-
+        stage('second stage'){
+             when{
+                allOf{
+                    branch 'feature-branch'
+                    environment name: 'team' , value: 'india'
+                }
+             }
+        steps{
+            echo "team is india"
+        }
     }
+}
 }
