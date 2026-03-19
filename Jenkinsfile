@@ -1,17 +1,15 @@
-pipeline{
-    agent any 
+pipeline {
+    agent any
+
     stages {
-        stage('Test Credentials'){
-    environment{
-        MUMBAI_CREDS = credentials('rohit_mumbai_creds')
-    }
+        stage('Test Credentials') {
+            environment {
+                MUMBAI_CREDS = credentials('rohit_mumbai_creds')
+            }
+            steps {
+                echo "Username is ${MUMBAI_CREDS_USR}"
+                echo "Credentials loaded successfully"
+            }
         }
     }
-     
-    steps{
-        echo = "MUMBAI_CREDS credentials is ${MUMBAI_CREDS}"
-        echo = "Username is ${MUMBAI_CREDS_USR}"
-        echo = "Password is ${MUMBAI_CREDS_PSW}"
-    }
-    
 }
