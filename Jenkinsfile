@@ -8,8 +8,8 @@ pipeline{
         stage('first stage'){
             when{
                 allOf{
-                    branch 'main'
-                    environment name: 'game' , value: 'soccer'
+                    branch 'feature-branch'
+                    environment name: 'match' , value: 'cricket'
 
                 }
                 
