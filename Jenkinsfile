@@ -1,19 +1,17 @@
-pipeline {
-    agent any
-
-    environment {
-        match = "cricket"
-        team = "india"
-    }
-
+pipeline{
+    agent any 
     stages {
-        stage('first stage') {
-            when {
-                environment name: 'match', value: 'cricket'
-            }
-            steps {
-                echo "india playing cricket"
-            }
+        stage('Test Credentials'){
+    environment{
+        MUMBAI_CREDS = credentials('rohit_mumbai_creds')
+    }
         }
     }
+     
+    steps{
+        echo = "MUMBAI_CREDS credentials is ${MUMBAI_CREDS}"
+        echo = "Username is ${MUMBAI_CREDS_USR}"
+        echo = "Password is ${MUMBAI_CREDS_PSW}"
+    }
+    
 }
