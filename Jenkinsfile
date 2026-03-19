@@ -8,12 +8,12 @@ pipeline{
         stage('first stage'){
             when{
                 not{
-                    environment name: 'match' , value: 'cricket'
+                    environment name: 'game' , value: 'soccer'
                 }
                 
             }
             steps{
-                echo "india playing cricket"
+                echo "india playing soccer"
             }
         }
         stage('second stage'){
