@@ -20,7 +20,7 @@ pipeline{
         stage('second stage'){
              when{
                 allOf{
-                    branch 'feature-branch'
+                    branch 'main'
                     environment name: 'team' , value: 'india'
                 }
              }
